@@ -3,10 +3,11 @@
     <head>
         <title>Login</title>
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <main>
-            <div class="container">
+            <div class="container1">
                 <h1>Login</h1>
                 <form id="formulario" class="formulario">
                     <label for="email">E-mail:</label>
@@ -17,52 +18,34 @@
                     <button type="submit">Log in</button>
                 </form>
             </div>
-        </main>
-    </body>
+            <table id="tabela">
+                <thead>
+                    <th>Primeiro Nome</th>
+                    <th>Último Nome</th>
+                    <th>E-mail</th>
+                    <th>Telemóvel</th>
+                </thead>
 
-    <style>
-        body{
-            background: whitesmoke;
-            justify-items: center;
-            align-content: center;
-        }
-        .container{
-            z-index: 1;
-            justify-items: center;
-            border-radius: 10px;
-            box-shadow: 3px 3px 3px #666;
-            background: white;
-            width: 20vw;
-            height: 40vh;
-            h1{
-                margin-top: 2vh;
-                font-size: 38pt;
-                color: #1E1952;
+            </table>
+        </main>
+
+        <script>
+            window.onload = function (){
+                const nome2 = localStorage.getItem("nome2");
+                const segundo_nome2 = localStorage.getItem("segundo_nome2");
+                const email2 = localStorage.getItem("email2");
+                const telemovel2 = localStorage.getItem("telemovel2");
+
+                const tbody = document.createElement("tbody");
+                tbody.innerHTML = `
+                    <td>${nome2}</td>
+                    <td>${segundo_nome2}</td>
+                    <td>${email2}</td>
+                    <td>${telemovel2}</td>
+                `;
             }
-             .formulario label, input, button{
-                margin-top: 1vh;
-                display: block;
-            }
-            .formulario label, h3{
-                font-size: 24px;
-            }
-            .formulario input, button{
-                width: 32vh;
-                font-size: 18px;
-                height: 4vh;
-                border-radius: 10px;
-            }
-            .formulario button{
-                background: #1E1952;
-                color: white;
-            }
-            .formulario label{
-                color: #1E1952;
-            }
-            .formulario h3 a{
-                color: #ac030d;
-            }
-        }
-    </style>
-    
+            document.getElementById("tabela").appendChild(tbody);
+        </script>
+
+    </body>
 </html>
