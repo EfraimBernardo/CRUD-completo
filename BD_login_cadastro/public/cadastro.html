@@ -1,0 +1,62 @@
+<! DOCTYPE html>
+<html>
+    <head>
+        <title>Cadástro</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <main>
+            <div class="container">
+                <h1>Cadástro</h1>
+                <form id="formulario" class="formulario">
+                    <label for="email">Primeiro nome:</label>
+                    <input type="text" id="nome" placeholder="Digite o seu primeiro nome nome">
+                    <label for="password">Último nome:</label>
+                    <input type="text" id="segundo-nome" placeholder="Digite o seu último nome">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" placeholder="Digite o seu e-mail">
+                    <label for="telemovel">Telemóvel:</label>
+                    <input type="number" id="telemovel" placeholder="Digite o seu número de Telemóvel">
+                    <h3>Já tem uma conta? <a href="login.html">Faça Login</a></h3>
+                    <button type="submit" onclick="sig()">Sign up</button>
+                </form>
+            </div>
+        </main>
+
+        <script>
+                document.getElementById("formulario").addEventListener("submit", async function (event) {
+                    event.preventDefault();
+                    
+                    const nome = document.getElementById("nome").value;
+                    const segundo_nome = document.getElementById("segundo-nome").value;
+                    const email = document.getElementById("email").value;
+                    const telemovel = document.getElementById("telemovel").value;
+
+                    if( nome === "" || segundo_nome === "" || email === "" || telemovel === "" ){
+                        alert("Preencha os campos todos!");
+                        return;
+                    } else{
+                        localStorage.setItem("nome2", nome);
+                        localStorage.setItem("segundo_nome2", segundo_nome);
+                        localStorage.setItem("email2", email);
+                        localStorage.setItem("telemovel2", telemovel);
+
+                        const formData = new FormData(this);
+                        const data = Object.fromEntries(formData.entries());
+
+                        const resposta = await fetch("/enviar", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify(data),
+                        });
+
+                        const resultado= await resposta.text();
+                        alert(resultado);
+                    }
+                });
+             
+        </script>
+
+    </body>
+</html>
