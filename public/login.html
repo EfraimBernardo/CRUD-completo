@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+        <h2>Login</h2>
+
+        <label>Email</label>
+        <input type="email" id="loginEmail">
+
+        <label>Número</label>
+        <input type="text" id="loginNumero">
+
+        <button onclick="login()">Entrar</button>
+
+        <div id="msgLogin" class="msg"></div>
+    </div>
+    
+    <script src="script.js" defer></script>
+    <!-- <script>
+      document.getElementById("formulario").addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const Email = document.getElementById("Email").value.trim();
+        const Numero = document.getElementById("Numero").value.trim();
+
+        if (!Email || !Numero) {
+          alert("Preencha todos os campos!");
+          return;
+        }
+
+        try {
+          const resposta = await fetch("/user/usuario/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ Email, Numero }),
+          });
+
+          const data = await resposta.json();
+
+          if (resposta.ok) {
+            alert("Login efectuado com sucesso!");
+
+            const user = data.Usuario;
+            const linha = `
+              <tr>
+                <td>${user.PrimeiroNome}</td>
+                <td>${user.UltimoNome}</td>
+                <td>${user.Email}</td>
+                <td>${user.Numero}</td>
+              </tr>
+            `;
+            document.getElementById("tabelaCorpo").innerHTML = linha;
+          } else {
+            alert(data.message || "Erro ao efectuar login!");
+          }
+        } catch (erro) {
+          console.error("Erro:", erro);
+          alert("Falha na conexão com o servidor.");
+        }
+      });
+    </script> -->
+  </body>
+</html>

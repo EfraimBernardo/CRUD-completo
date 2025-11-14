@@ -1,0 +1,108 @@
+<!-- <!DOCTYPE html>
+<html lang="pt-pt">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <h1>Cadastro</h1>
+        <form id="formulario" class="formulario">
+          <label for="PrimeiroNome">Primeiro nome:</label>
+          <input type="text" id="PrimeiroNome" name="PrimeiroNome" placeholder="Digite o seu primeiro nome" />
+
+          <label for="UltimoNome">Último nome:</label>
+          <input type="text" id="UltimoNome" name="UltimoNome" placeholder="Digite o seu último nome" />
+
+          <label for="Email">E-mail:</label>
+          <input type="email" id="Email" name="Email" placeholder="Digite o seu e-mail" />
+
+          <label for="Numero">Telemóvel:</label>
+          <input type="number" id="Numero" name="Numero" placeholder="Digite o seu número de Telemóvel" />
+
+          <h3>Já tem uma conta? <a href="login.html">Faça Login</a></h3>
+          <button type="submit">Cadastrar</button>
+        </form>
+      </div>
+    </main>
+
+    <script>
+      document.getElementById("formulario").addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const PrimeiroNome = document.getElementById("PrimeiroNome").value.trim();
+        const UltimoNome = document.getElementById("UltimoNome").value.trim();
+        const Email = document.getElementById("Email").value.trim();
+        const Numero = document.getElementById("Numero").value.trim();
+
+        if (!PrimeiroNome || !UltimoNome || !Email || !Numero) {
+          alert("Preencha todos os campos!");
+          return;
+        }
+
+        try {
+          const resposta = await fetch("/user/usuario", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ PrimeiroNome, UltimoNome, Email, Numero }),
+          });
+
+          const data = await resposta.json();
+
+          if (resposta.ok) {
+            alert("Usuário cadastrado com sucesso!");
+            // Guardar no localStorage (opcional)
+            localStorage.setItem("email2", Email);
+            localStorage.setItem("telemovel2", Numero);
+            window.location.href = "login.html";
+          } else {
+            alert(data.message || "Erro ao cadastrar usuário!");
+          }
+        } catch (erro) {
+          console.error("Erro:", erro);
+          alert("Falha na conexão com o servidor.");
+        }
+      });
+    </script>
+  </body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Usuário</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+<body>
+
+    <div class="container">
+        <h2>Cadastro</h2>
+
+        <label>Primeiro Nome</label>
+        <input type="text" id="primeiroNome">
+
+        <label>Último Nome</label>
+        <input type="text" id="ultimoNome">
+
+        <label>Email</label>
+        <input type="email" id="email">
+
+        <label>Número</label>
+        <input type="text" id="numero">
+
+        <button onclick="cadastrar()">Cadastrar</button>
+
+        <div id="msg" class="msg"></div>
+
+        <hr style="margin-top: 25px;">
+      </div>
+      
+    <script src="script.js" defer></script>
+
+</body>
+</html>

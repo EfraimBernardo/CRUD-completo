@@ -1,0 +1,27 @@
+{
+  "name": "bd_login_cadastro",
+  "version": "1.0.0",
+  "description": "Um CRUD completo",
+  "homepage": "https://github.com/EfraimBernardo/CRUD-completo#readme",
+  "bugs": {
+    "url": "https://github.com/EfraimBernardo/CRUD-completo/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EfraimBernardo/CRUD-completo.git"
+  },
+  "license": "ISC",
+  "author": "Efraim Bernardo",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "node --watch server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "path": "^0.12.7",
+    "pg": "^8.16.3",
+    "pool": "^0.4.1"
+  }
+}
